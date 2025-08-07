@@ -5,8 +5,6 @@ import pickle as pkl
 from predictions import predict
 
 s.title("Titanic Survival Prediction")
-#X = titan_data[['Cabin Int', 'Gender Int','Pclass', 'Age', 'SibSp', 'Parch']]
-
 
 input_cabin_int = s.number_input("What is the cabin by interger?")
 
@@ -23,3 +21,7 @@ input_par = s.number_input("If they had children, please enter 1. If not, enter 
 
 if s.button("Predict"):
     result = predict(np.array([[int(input_cabin_int), int(input_gender), int(input_pclass), int(input_age), int(input_sib), int(input_par)]]))
+    if result == 0:
+        s.text("The person did not survive.")
+    else:
+        s.text("The person did survive.")
